@@ -28,7 +28,7 @@ namespace SwaggerShowcaseTests
         public async Task TestGetMentorsReturnJsonContent(string url)
         {
             //Arrange 
-            var client = _factory.CreateClient();
+            using var client = _factory.CreateClient();
 
             //Act 
             var response = await client.GetAsync(url);
@@ -40,9 +40,9 @@ namespace SwaggerShowcaseTests
 
         [Fact]
         public async Task TestIfGetAllMentorsReturnsOk()
-        {   
+        {
             //Arrange
-            var client = _factory.CreateClient();
+            using var client = _factory.CreateClient();
 
             //Act
             var response = await client.GetAsync("/api/mentors");
@@ -55,7 +55,7 @@ namespace SwaggerShowcaseTests
         public async Task TestIfGetSingleMentorReturnsProperData()
         {
             //Arrange
-            var client = _factory.CreateClient();
+            using var client = _factory.CreateClient();
 
             //Act
             var response = await client.GetAsync("/api/mentors/1");
@@ -70,7 +70,7 @@ namespace SwaggerShowcaseTests
         public async Task TestIfGetAllMentorsReturnsAllMentors()
         {
             //Arrange
-            var client = _factory.CreateClient();
+            using var client = _factory.CreateClient();
             var response = await client.GetStringAsync("/api/mentors");
 
             //Act
